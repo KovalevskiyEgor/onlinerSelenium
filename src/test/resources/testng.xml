@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+    </listeners>
+
+    <test name="test1">
+        <parameter name="marketLaunchDateFrom" value="2015" />
+        <parameter name="marketLaunchDateTo" value="2023" />
+        <parameter name="matrix" value="OLED" />
+        <parameter name="material" value="металл" />
+        <parameter name="isNumpadNeeded" value="Нет" />
+        <classes>
+            <class name="test.OnlinerTest" />
+        </classes>
+    </test>
+</suite>
