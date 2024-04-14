@@ -71,13 +71,14 @@ public class LaptopsPage extends BasePage{
         log.info(String.valueOf(numpadCheckBox.isSelected()));
         Screenshoter.takeScreenshot("numpad");
     }
-    @Step("выбираем средний ноутбук")
+    @Step("выбор среднего ноутбука")
     public void clickOnAverageLaptop(){
         laptopsList = driver.findElements(By.xpath("//div[contains(@class,\"catalog-form__description_huge-additional\")]//span[contains(text(),\"р.\")and not(@class)]"));
         scrollToElementAndClick(getAverageLaptop(laptopsList));
         log.info(String.valueOf(laptopsList.size()));
         Screenshoter.takeScreenshot("средний ноут");
     }
+    @Step("проверка выбраны ли производители")
     public boolean checkIfProducersSelected(){
         ArrayList<String> producersList = readXmlWithProducers();
         boolean isSelected = false;
@@ -87,6 +88,7 @@ public class LaptopsPage extends BasePage{
         }
         return isSelected;
     }
+    @Step("проверка выбрана ли дата выхода на рынок")
     public boolean checkIfMarketDateSet(String marketLaunchDateFromString, String marketLaunchDateToString) {
         return (marketLaunchDateFrom.getAttribute("value").equals(marketLaunchDateFromString) &&
                 marketLaunchDateTo.getAttribute("value").equals(marketLaunchDateToString));
@@ -150,14 +152,17 @@ public class LaptopsPage extends BasePage{
             js.executeScript("arguments[0].click();", producer);
         }
     }
+    @Step("проверка выбрана ли матрица")
     public boolean checkIfMatrixSelected(String matrixString) {
         WebElement matrixInput = driver.findElement(By.xpath(String.format(CHECK_BOX_XPATH,matrixString)+"/../../input"));
         return matrixInput.isSelected();
     }
+    @Step("проверка выбран ли материал")
     public boolean checkIfMaterialSelected(String materialString) {
         WebElement materialInput = driver.findElement(By.xpath(String.format(CHECK_BOX_XPATH,materialString)+"/../../input"));
         return materialInput.isSelected();
     }
+    @Step("проверка выбрал ли numpad")
     public boolean checkIfNumpadSelected(String isNumpadNeeded) {
         String value = isNumpadNeeded.equals("Да")?"1":"0";
         WebElement numpadInput = driver.findElement(By.xpath(String.format("//input[@name=\"numpad\" and @value=\"%s\"]",value)));

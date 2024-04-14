@@ -19,15 +19,15 @@ public class OnlinerTest extends BaseTest{
 
         LaptopsPage laptopsPage = new LaptopsPage();
         laptopsPage.setProducers();
-        softAssert.assertTrue(laptopsPage.checkIfProducersSelected(),"выбраны ли прозводители");
+        softAssert.assertTrue(laptopsPage.checkIfProducersSelected(),"производители не выбраны");
         laptopsPage.setMarketLaunchDate(marketLaunchDateFrom,marketLaunchDateTo);
-        softAssert.assertTrue(laptopsPage.checkIfMarketDateSet(marketLaunchDateFrom, marketLaunchDateTo),"выбран ли год выхода");
+        softAssert.assertTrue(laptopsPage.checkIfMarketDateSet(marketLaunchDateFrom, marketLaunchDateTo),"год выхода не выбран");
         laptopsPage.setMatrix(matrix);
-        softAssert.assertTrue(laptopsPage.checkIfMatrixSelected(matrix),"выбрана ли матрица");
+        softAssert.assertTrue(laptopsPage.checkIfMatrixSelected(matrix),"матрица не выбрана");
         laptopsPage.setMaterial(material);
-        softAssert.assertTrue(laptopsPage.checkIfMaterialSelected(material),"выбран ли материал");
+        softAssert.assertTrue(laptopsPage.checkIfMaterialSelected(material),"материал не выбран");
         laptopsPage.setNumpad(isNumpadNeeded);
-        softAssert.assertTrue(laptopsPage.checkIfNumpadSelected(isNumpadNeeded),"выбран ли numpad");
+        softAssert.assertTrue(laptopsPage.checkIfNumpadSelected(isNumpadNeeded),"numpad не выбран");
         laptopsPage.clickOnAverageLaptop();
 
         LaptopInformationPage laptopInformationPage = new LaptopInformationPage();
@@ -39,7 +39,7 @@ public class OnlinerTest extends BaseTest{
         basketPage.goToCheckout();
 
         CheckoutPage checkoutPage = new CheckoutPage();
-        softAssert.assertTrue(checkoutPage.checkIfPriceCorrect(),"цена правильно посчитана");
+        softAssert.assertTrue(checkoutPage.checkIfPriceCorrect(),"цена не правильно посчитана");
         checkoutPage.setTown("Минск");
         checkoutPage.setStreet("ул. Орловская");
         checkoutPage.setHouse("10");

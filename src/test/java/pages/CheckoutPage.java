@@ -6,8 +6,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
 import utils.Screenshoter;
 
-import java.util.List;
-
 @Log
 public class CheckoutPage extends BasePage{
     @FindBy(xpath = "//input[@placeholder=\"Укажите населенный пункт\"]")
@@ -97,6 +95,7 @@ public class CheckoutPage extends BasePage{
     public void goToPayment(){
         paymentButton.click();
     }
+    @Step("проверка что цена правильно посчитана")
     public boolean checkIfPriceCorrect() {
         boolean isPriceCorrect;
         try {

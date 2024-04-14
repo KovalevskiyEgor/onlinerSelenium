@@ -58,7 +58,7 @@ public class LaptopInformationPage extends BasePage{
         }
         Screenshoter.takeScreenshot("перейти в корзину");
     }
-
+    @Step("проверка тот ли выбран ноутбук")
     public boolean checkIfItsRightLaptop() {
         String laptopModelString = propertyReader.getProperty("laptop.model").trim().toLowerCase();
         return laptopModel.getText().trim().toLowerCase().contains(laptopModelString);
