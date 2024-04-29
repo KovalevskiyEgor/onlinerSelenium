@@ -25,7 +25,6 @@ public class LaptopInformationPage extends BasePage{
     private String getLowestPrice(List<String> list){
         Collections.sort(list, (s1, s2) -> s1.compareToIgnoreCase(s2));
         Collections.sort(list, Comparator.comparingInt(String::length).thenComparing(String::compareTo));
-        log.info(String.format("//div[contains(@class,\"offers-list__description_nodecor\" ) and contains(text(),\"%s\")]",list.get(0)));
         return (String.format("//div[contains(@class,\"offers-list__description_nodecor\" ) and contains(text(),\"%s\")]",list.get(0)));
     }
     @Step("добавляем ноутбук в корзину")
@@ -41,7 +40,7 @@ public class LaptopInformationPage extends BasePage{
         String laptopWithLowestPriceXPath = getLowestPrice(listString);
         WebElement laptopWithLowestPrice = driver.findElement(By.xpath(laptopWithLowestPriceXPath));
         js.executeScript("arguments[0].scrollIntoView(true);", laptopWithLowestPrice);
-        if(acceptNotification.isDisplayed()) acceptNotification.click();
+//        if(acceptNotification.isDisplayed()) acceptNotification.click();
 
         WebElement basketButton = driver.findElement(By.xpath("("+laptopWithLowestPriceXPath+"//ancestor::div[@class=\"offers-list__flex\"]//a[contains(text(),\" В корзину\")])[2]"));
         basketButton.click();

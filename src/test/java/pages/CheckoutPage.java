@@ -102,7 +102,6 @@ public class CheckoutPage extends BasePage{
             driver.findElement(By.xpath(String.format("//span[contains(text(),\"%s\")]",propertyReader.getProperty("laptop.price"))));
             isPriceCorrect = true;
         }catch (Exception e){
-            log.info(String.format("//span[contains(text(),\"%s\")]",propertyReader.getProperty("laptop.price")));
             isPriceCorrect = false;
         }
         return isPriceCorrect;

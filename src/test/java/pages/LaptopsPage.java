@@ -12,7 +12,7 @@ import java.util.*;
 
 @Log
 public class LaptopsPage extends BasePage{
-    private static String CHECK_BOX_XPATH = "//div[@class=\"catalog-form__checkbox-sign\" and contains(text(),\"%s\")]" ;
+    private static String CHECK_BOX_XPATH = "//div[@class=\"catalog-form__checkbox-sign\" and contains(text(),\"%s\")]";
     public JavascriptExecutor js = (JavascriptExecutor) driver;
     @FindBy(xpath = "(//div[contains(@class,'input-style__real')])[1]")
     WebElement producersListButton;
@@ -68,14 +68,12 @@ public class LaptopsPage extends BasePage{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        log.info(String.valueOf(numpadCheckBox.isSelected()));
         Screenshoter.takeScreenshot("numpad");
     }
     @Step("выбор среднего ноутбука")
     public void clickOnAverageLaptop(){
         laptopsList = driver.findElements(By.xpath("//div[contains(@class,\"catalog-form__description_huge-additional\")]//span[contains(text(),\"р.\")and not(@class)]"));
         scrollToElementAndClick(getAverageLaptop(laptopsList));
-        log.info(String.valueOf(laptopsList.size()));
         Screenshoter.takeScreenshot("средний ноут");
     }
     @Step("проверка выбраны ли производители")
@@ -100,7 +98,6 @@ public class LaptopsPage extends BasePage{
         Collections.sort(listString, Comparator.comparingInt(String::length).thenComparing(String::compareTo));
         String averagePrice = listString.get(listString.size()/2);
         averagePrice = averagePrice.substring(0,averagePrice.indexOf(" "));
-        log.info("Средний = "+ averagePrice);
         String averageLaptopXPath = String.format("//div[contains(@class,\"catalog-form__description_huge-additional\")]//span[contains(text(),\"%s\")and not(@class)]",averagePrice);
         saveAverageLaptopModelAndPrice(averageLaptopXPath, averagePrice);
         return driver.findElement(By.xpath(averageLaptopXPath));
